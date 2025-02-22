@@ -4,7 +4,7 @@ function removeElement(array, item){
 	let newArr = [];
 	array.forEach(i => {
 		if(i !== item){
-			newArr.push(i)
+			newArr.push(i);
 		}
 	})
 	return newArr;
