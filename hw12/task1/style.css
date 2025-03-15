@@ -1,0 +1,17 @@
+div{
+	margin-top: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	column-gap: 20px;
+}
+
+.btn{
+	padding: 20px;
+
+}
+
+[data-type="redirect"]{
+	background-color: gray;
+	color: aliceblue;
+}
