@@ -44,7 +44,6 @@ todoContainer.addEventListener('click', (e)=>{
 
 	if(target.getAttribute('data-type') === 'delete'){
 		tasks = tasks.filter((item, i) => {return i != targetId});
-		console.log(tasks);
 		fillLocalStorage()
 		fillTodo();
 	}
