@@ -27,7 +27,9 @@ function Student (name, lastname, birthdayYear, marks){
 			for(let i = 0; i < 25; i++){
 				if(attendance[i] === undefined){
 					attendance[i] = true;
+					break;
 				}
+				
 			} 
 		}
 	}
@@ -35,23 +37,17 @@ function Student (name, lastname, birthdayYear, marks){
 		if(checkAttendance()){
 			for(let i = 0; i < 25; i++){
 				if(attendance[i] === undefined){
-					attendance[i] = false;
+					attendance[i] = false; 
+					break;
 				}
-			
+				
 			}
 		}
 	}	
 
 
 	this.summary = () => {
-		let avgMark = this.getAvgMark(), avgAttendance = 0;
-
-
-		for(let lesson of attendance){
-			avgAttendance += +lesson;
-		}
-		
-		avgAttendance = parseFloat(avgAttendance / attendance.length);
+		let avgMark = this.getAvgMark(), avgAttendance = attendance.reduce((acc, curr) => acc += (+curr)) / attendance.length;
 
 		if(avgAttendance >= 0.9 || avgMark >= 90){
 			if(avgAttendance >= 0.9 && avgMark >= 90){
@@ -72,9 +68,9 @@ const student2 = new Student ('John', 'Jackson', 1985, [100, 100, 100, 27, 100, 
 const student3 = new Student ('Jack', 'Peterson', 2002, [22, 33, 44, 53, 100, 66, 73, 76, 53, 100]);
 
 for(let i = 0; i < 25; i++){
-	Math.floor(Math.random() * 2) == 0 ? student1.absent() : student1.present();
-	Math.floor(Math.random() * 2) == 0 ? student2.absent() : student1.present();
-	Math.floor(Math.random() * 2) == 0 ? student3.absent() : student1.present();
+	Math.floor(Math.random() * 2) === 0 ? student1.absent() : student1.present();
+	Math.floor(Math.random() * 2) === 0 ? student2.absent() : student2.present();
+	Math.floor(Math.random() * 2) === 0 ? student3.absent() : student3.present();
 }
 
 console.log(`Student ${student1.name} ${student1.lastname} is ${student1.getAge()} years old and average mark is ${student1.getAvgMark()} ${student1.summary()}`);
