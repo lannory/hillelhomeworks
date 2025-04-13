@@ -1,0 +1,36 @@
+.hide{
+	display: none;
+}
+
+.slider-controls{
+	display: flex;
+	column-gap: 20px;
+	align-items: center;
+}
+
+.slider{
+	margin-left: 100px;
+}
+.slider-wrapper{
+	max-width: 700px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.prev-btn{
+	position: absolute;
+	left: 0;
+	top: 50%;
+}
+
+.next-btn{
+	position: absolute;
+	right: 55%;
+	top: 50%;
+}
+
+.show{
+	display:inline-block;
+}

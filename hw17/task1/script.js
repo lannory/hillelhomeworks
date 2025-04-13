@@ -8,3 +8,4 @@ console.log(calc.subtract(10, 4));
 console.log(calc.multiply(3, 6)); 
 
 console.log(calc.divide(8, 2)); 
+
