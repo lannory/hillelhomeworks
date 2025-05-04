@@ -1,4 +1,6 @@
-let url = '';
+import '../scss/style.scss';
+
+
 const links = {
 	planets: 'https://swapi.tech/api/planets',
 	people: 'https://swapi.tech/api/people',
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 	let currBlock = 'people', block = document.querySelector(`.${currBlock}-block`);
 
 	nav.addEventListener('click', (e) => {
-		target = e.target.getAttribute('data-type');
+		const target = e.target.getAttribute('data-type');
 		currBlock = target;
 		block = document.querySelector(`.${currBlock}-block`);
 		doAction(block, currBlock);
