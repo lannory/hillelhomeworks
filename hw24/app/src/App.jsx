@@ -15,7 +15,7 @@ function App(props) {
 
   if(props.isOpened){
     return (
-          <div class={props.class}>
+          <div className={props.class}>
             
             {shop.map(({id, name, price}) => {
               return (<div key={id}>
