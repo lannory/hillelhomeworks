@@ -1,0 +1,14 @@
+img{
+	width: 100px;
+	height: 100px;
+}
+
+.smiles {
+	display: flex;
+	column-gap: 50px;
+}
+
+.show-btn{
+	margin-top: 50px;
+	background-color: #0e1a35;
+}
