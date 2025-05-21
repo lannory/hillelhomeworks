@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import './contacts.css'
 import DeleteContact from "./DeleteContact";
-export default function ContactsList (){
+export default function ContactsList ({changeRoute, setContact}){
 
 	const [allContacts, setAllContacts] = useState([])
 
@@ -21,7 +21,7 @@ export default function ContactsList (){
 			<div>{item.name}</div>
 			<div>{item.phone}</div>
 			<DeleteContact id={item.id}/>
-			{/* <button>edit</button> */}
+			<button onClick={() => {changeRoute('editContact'); setContact(item)}}>edit</button>
 		</div>)}
 	</div>
 }

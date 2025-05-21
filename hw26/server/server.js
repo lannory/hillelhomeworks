@@ -27,6 +27,15 @@ app.post('/contacts', (request, response) => {
 	data.push(newContact);
 })
 
+app.patch('/contacts', (request, response) => {
+	const {id, name, phone} = request.body;
+	
+	const i = data.findIndex(item => item.id === id);
+
+	data[i].name = name;
+	data[i].id = id;
+	data[i].phone = phone;
+})
 
 app.listen(PORT, ()=>{
 	console.log('server started');
