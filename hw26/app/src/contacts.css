@@ -1,0 +1,11 @@
+.contact-item{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-width: 500px;
+}
+.contact-menu{
+	display: flex;
+	flex-direction: column;
+	row-gap: 30px;
+}
