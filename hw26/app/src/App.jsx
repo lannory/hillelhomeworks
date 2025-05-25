@@ -1,23 +1,61 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css';
-import AddContact from './AddContact';
-import ContactsList from './ContactsList';
+import AddContact from './pages/AddContact';
+import ContactsList from './pages/ContactsList';
+import {BrowserRouter, Route, Routes, Link, useLocation} from 'react-router'
+import { LanguageContext } from './contexts/Language';
+import { ThemeContext } from './contexts/Theme';
+import Login from './pages/Login';
 
 function App() {
-  const [route, setRoute] = useState('Contacts')
 
-  const [contact, setContact] = useState({});
+
+  const location = useLocation();
+
+  const [language, setLanguage] = useState('EN');
+  const [theme, setTheme] = useState('dark');
+
+  const [contact, setContact] = useState([]);
+
+  const changeLanguage = (e) =>{
+    setLanguage(e.target.value)
+    
+  }
+
+  const changeTheme = e => {
+    setTheme(e.target.value);
+    document.body.classList.remove(e.target.value === 'dark' ? 'light' : 'dark');
+    document.body.classList.add(e.target.value === 'dark' ? 'dark' : 'light')
+  }
+  
+
+
 
 
   return (
-    <>
-      <nav><button onClick={()=> setRoute('Contacts')}>Contacts</button> <button onClick={()=> setRoute('addContact')}>Add new contact</button></nav>
-      {route === 'Contacts' && <ContactsList changeRoute={setRoute} setContact={setContact}/> }
-      {route === 'addContact' && <AddContact changeRoute={setRoute} currContact={{}}/>}
-      {route === 'editContact' && <AddContact changeRoute={setRoute} currContact={contact}/>}
-    </>
+
+    <ThemeContext.Provider value={theme}>
+      <LanguageContext.Provider value={language}>
+          {location.pathname !== '/' && <nav>
+            <button className={theme === 'dark' ? 'dark' : 'light'}><Link to='/contacts'>{language === 'EN' ? 'Contacts' : 'Контакти'}</Link></button>
+            <button className={theme === 'dark' ? 'dark' : 'light'}><Link to='/addContact'>{language === 'EN' ? 'Add new contact' : 'Додати контакт'}</Link></button>
+            <select className={theme === 'dark' ? 'dark' : 'light'} onChange={changeLanguage} id="">
+              <option value="EN">EN</option>
+              <option value="UA">UA</option>
+            </select>
+            <select className={theme === 'dark' ? 'dark' : 'light'} onChange={changeTheme} id="">
+              <option value="dark">dark</option>
+              <option value="light">light</option>
+            </select>
+            </nav>}
+          <Routes>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/contacts" element={<ContactsList setContact={setContact}/>}/>
+            <Route path='/addContact' element={<AddContact currContact={{}}/>}/>
+            <Route path='/editContact' element={<AddContact currContact={contact}/>}/>
+          </Routes>
+      </LanguageContext.Provider>
+    </ThemeContext.Provider>
   )
 }
 

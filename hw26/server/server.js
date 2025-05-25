@@ -12,10 +12,11 @@ app.get('/contacts', (request, response)=>{
 	response.send(JSON.stringify(data));
 });
 
-app.delete('/contacts', (request, response)=>{
-	const {id} = request.body
+app.delete('/contacts/:id', (request, response)=>{
+	const id = parseInt(request.params.id)
 
 	const index = data.findIndex(item => item.id === id);
+
 	data.splice(index, 1);
 
 	response.send('deleted')

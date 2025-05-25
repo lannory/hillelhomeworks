@@ -3,6 +3,7 @@
 	align-items: center;
 	justify-content: space-between;
 	min-width: 500px;
+	column-gap: 20px;
 }
 .contact-menu{
 	display: flex;
